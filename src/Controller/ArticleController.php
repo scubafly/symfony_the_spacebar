@@ -24,6 +24,7 @@ class ArticleController extends AbstractController {
       'Brigantine chantey knave swab pinnace Jack Tar landlubber or just lubber rum pink piracy.',
       'Boatswain Nelsons folly lee sloop matey jury mast clipper swab mizzenmast jack.',
     ];
+
     return $this->render('article/show.html.twig', [
       'title' => ucwords(str_replace('-', ' ', $slug)),
       'comments' => $comments,
