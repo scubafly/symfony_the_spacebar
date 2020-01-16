@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ArticleController {
+class ArticleController extends AbstractController {
 
   /**
    * @Route("/")
@@ -18,11 +19,15 @@ class ArticleController {
    * @Route("/news/{slug}")
    */
   public function show($slug) {
-    return new Response(
-      sprintf('Future page to show the article: %s',
-      $slug
-      )
-    );
+    $comments = [
+      'Tack hogshead coxswain splice the main brace clipper tackle sutler maroon boatswain fathom.',
+      'Brigantine chantey knave swab pinnace Jack Tar landlubber or just lubber rum pink piracy.',
+      'Boatswain Nelsons folly lee sloop matey jury mast clipper swab mizzenmast jack.',
+    ];
+    return $this->render('article/show.html.twig', [
+      'title' => ucwords(str_replace('-', ' ', $slug)),
+      'comments' => $comments,
+    ]);
   }
 
 }
